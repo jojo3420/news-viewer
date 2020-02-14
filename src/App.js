@@ -5,21 +5,13 @@ import dotenv from 'dotenv';
 import Categories from './components/Categories';
 
 dotenv.config();
+// REACT_APP_NEWS_API_URL=https://newsapi.org/v2
 
 function App() {
-	const [activeCategory, setActiveCategory] = useState('all');
-
-	const onActiveCategory = useCallback(title => {
-		setActiveCategory(title);
-	}, []);
-
 	return (
 		<>
-			<Categories
-				activeCategory={activeCategory}
-				onActiveCategory={onActiveCategory}
-			/>
-			<NewsList activeCategory={activeCategory} />
+			<Categories />
+			<NewsList />
 		</>
 	);
 }

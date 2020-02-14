@@ -18,12 +18,12 @@ const NewsListBlock = styled.div`
 	}
 `;
 
-// const sample = {
-// 	title: '제목',
-// 	description: 'content',
-// 	url: 'https://www.google.com',
-// 	urlToImage: 'https://via.placeholder.com/160',
-// };
+const sample = {
+	title: '제목',
+	description: 'content',
+	url: 'https://www.google.com',
+	urlToImage: 'https://via.placeholder.com/160',
+};
 
 /**
  * 뉴스 목록 프리젠테이션 컴포넌트
@@ -35,62 +35,12 @@ const NewsListBlock = styled.div`
  * @constructor
  */
 function NewsList({ activeCategory }) {
-	// const [data, setData] = useState({
-	// 	articles: [],
-	// 	status: '',
-	// 	totalResults: 0,
-	// });
-
-	// useEffect(() => {
-	// 	// useEffect 후크 내부에서 함수를 만들어서 async 함수를 만들어야한다.
-	// 	// useEffect 는 리턴하는 함수가 클린업 이기 때문이라고 한다.
-	// 	// 완벽히 이해 (X)
-	// 	const fetchData = async () => {
-	// 		setLoading(true);
-	// 		try {
-	// 			const query =
-	// 				activeCategory === 'all' ? '' : `&category=${activeCategory}`;
-	// 			const url = `${process.env.REACT_APP_NEWS_API_URL}/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_API_KEY}${query}`;
-	// 			const response = await axios.get(url);
-	// 			const { status, totalResults, articles } = response.data;
-	// 			setData(
-	// 				produce(data, draft => {
-	// 					draft.status = status;
-	// 					draft.totalResults = totalResults;
-	// 					draft.articles = articles;
-	// 				}),
-	// 			);
-	// 		} catch (e) {
-	// 			console.log(e);
-	// 		}
-	// 		setLoading(false);
-	// 	};
-	//
-	// 	fetchData();
-	// }, [activeCategory]);
-
-	// 배열을 리턴하므로 순서가 맞추는게 중요함.
-	const [loading, error, response] = usePromise(() => {
-		const query = activeCategory === 'all' ? '' : `&category=${activeCategory}`;
-		const url = `${process.env.REACT_APP_NEWS_API_URL}/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_API_KEY}${query}`;
-		return axios.get(url);
-	}, [activeCategory]);
-
-	if (loading) return <NewsListBlock>loading...</NewsListBlock>;
-	if (error) return <NewsListBlock>error... {error.toString()}</NewsListBlock>;
-	// @TODO: 첫번째 렌더링 될때 response 는  null 이므로. ==>  아직 response 값이 설정되지 않음!
-	if (!response) return <NewsListBlock>response is null</NewsListBlock>;
-
-	const { articles, status, totalResults } = response.data;
-	const data = { articles, status, totalResults };
-	if (data.articles.length === 0)
-		return <NewsListBlock>현재 뉴스가 없습니다.</NewsListBlock>;
-
 	return (
 		<NewsListBlock>
-			{data.articles.map(article => (
-				<NewsItem key={article.url} article={article} />
-			))}
+			<NewsItem article={sample}></NewsItem>
+			<NewsItem article={sample}></NewsItem>
+			<NewsItem article={sample}></NewsItem>
+			<NewsItem article={sample}></NewsItem>
 		</NewsListBlock>
 	);
 }

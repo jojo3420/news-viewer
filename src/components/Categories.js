@@ -45,18 +45,14 @@ const Category = styled.div`
 	}
 `;
 
-function Categories({ activeCategory, onActiveCategory }) {
+function Categories({}) {
 	return (
 		<CategoriesBlock>
-			{categories.map(category => (
-				<Category
-					key={category.title}
-					active={activeCategory === category.title}
-					onClick={() => onActiveCategory(category.title)}
-				>
-					{category.label}
-				</Category>
-			))}
+			<Category>카테고리1</Category>
+			<Category>카테고리2</Category>
+			<Category>카테고리3</Category>
+			<Category>카테고리4</Category>
+			<Category>카테고리5</Category>
 		</CategoriesBlock>
 	);
 }
